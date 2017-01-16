@@ -9,6 +9,7 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -19,8 +20,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = {
         "com.nhnent.benjamin.dao",
+        "com.nhnent.benjamin.aop",
         "com.nhnent.benjamin.service.kor"
 })
 public class ApplicationContextConfig {
