@@ -2,6 +2,7 @@ package com.nhnent.benjamin.service.kor;
 
 import com.nhnent.benjamin.dao.MemberDao;
 import com.nhnent.benjamin.service.MemberService;
+import com.nhnent.benjamin.stereotype.CustomLogger;
 import com.nhnent.benjamin.vo.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class MemberServiceImpl implements MemberService {
     private MemberDao memberDao;
 
     @Override
+    @CustomLogger
     public Member getMember() {
         Member member = memberDao.exist("dongmyo@nhnent.com", "12345");
         if (member == null) {

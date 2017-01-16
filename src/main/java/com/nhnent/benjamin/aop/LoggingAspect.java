@@ -5,6 +5,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,7 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-    @Around("execution(* getMember(..))")
+    @Pointcut("@annotation(com.nhnent.benjamin.stereotype.CustomLogger)")
+    public void loggingPointCut() {
+
+    }
+
+    @Around("loggingPointCut()")
     public Member around(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("Start Method! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ");
         Signature signature = pjp.getSignature();
