@@ -1,12 +1,8 @@
 package com.nhnent.benjamin.service.jpn;
 
-import com.nhnent.benjamin.dao.MemberDao;
 import com.nhnent.benjamin.service.MemberService;
 import com.nhnent.benjamin.vo.Member;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 
 /**
  * Created by benjamin on 2017. 1. 16..
@@ -14,25 +10,18 @@ import java.util.Date;
 @Service
 public class MemberServiceImpl implements MemberService{
 
-    @Autowired
-    private MemberDao memberDao;
+    @Override
+    public Member createMember(String email, String password, String name) {
+        return null;
+    }
 
     @Override
-    public Member getMember() {
-        Member member = memberDao.exist("dongmyo@nhnent.com", "12345");
-        if (member == null) {
-            member = new Member();
-            member.setEmail("dongmyo@nhnent.com");
-            member.setPassword("12345");
-            member.setName("dongmyo");
-            member.setCreatedDate(new Date());
-            member.setModifiedDate(new Date());
-        }
+    public Member getMember(String email, String password) throws Exception {
+        return null;
+    }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("<").append(member.getEmail()).append(">");
-        member.setEmail(sb.toString());
+    @Override
+    public void exchangeMemberName(Member member1, Member member2) throws Exception {
 
-        return member;
     }
 }
