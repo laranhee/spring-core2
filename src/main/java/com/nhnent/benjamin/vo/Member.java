@@ -59,4 +59,17 @@ public class Member {
         return this;
     }
 
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Member{");
+        sb.append("no=").append(no);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", createdDate=").append(createdDate);
+        sb.append(", modifiedDate=").append(modifiedDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }
