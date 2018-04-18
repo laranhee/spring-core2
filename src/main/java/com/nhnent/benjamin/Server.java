@@ -1,9 +1,12 @@
 package com.nhnent.benjamin;
 
 import com.nhnent.benjamin.dao.MemberDao;
+import com.nhnent.benjamin.model.Pizza;
 import com.nhnent.benjamin.vo.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -39,5 +42,30 @@ public class Server {
         } else {
             System.out.println(member.getName());
         }
+
+        // TODO: beanDefinition
+        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+        beanDefinition.setBeanClass(Pizza.class);
+
+        /*
+            cf.)
+
+            Class ClassPathXmlApplicationContext
+
+            java.lang.Object
+                org.springframework.core.io.DefaultResourceLoader
+                    org.springframework.context.support.AbstractApplicationContext
+                        org.springframework.context.support.AbstractRefreshableApplicationContext
+                            org.springframework.context.support.AbstractRefreshableConfigApplicationContext
+                                org.springframework.context.support.AbstractXmlApplicationContext
+                                    org.springframework.context.support.ClassPathXmlApplicationContext
+         */
+//        context.registerBeanDefinition("pizzaBean", beanDefinition);;
+
+        DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) ((ClassPathXmlApplicationContext) context).getBeanFactory();
+        beanFactory.registerBeanDefinition("pizzaBean", beanDefinition);
+
+        Pizza pizzaBean = (Pizza) context.getBean("pizzaBean");
+        System.out.println(pizzaBean.getName());
     }
 }
