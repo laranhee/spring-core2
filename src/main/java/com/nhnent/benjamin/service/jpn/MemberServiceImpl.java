@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Service
 public class MemberServiceImpl implements MemberService{
-
+    // TODO : use single-constructor injection #2
     @Autowired
     private MemberDao memberDao;
 

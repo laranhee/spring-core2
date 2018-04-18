@@ -12,6 +12,7 @@ public class MemberDao {
     private static final String NAMESPACE = "memberDao.";
 
 
+    // TODO : use single-constructor injection #3
     @Autowired
     SqlSessionTemplate sqlSessionTemplate;
 
