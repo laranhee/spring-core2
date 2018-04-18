@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.nhnent.study.springcore" level="debug" />
+    <logger name="com.nhnent.benjamin" level="debug" />
 
     <root level="error">
         <appender-ref ref="console"/>
