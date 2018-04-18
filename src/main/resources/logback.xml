@@ -8,7 +8,9 @@
         </encoder>
     </appender>
 
-    <logger name="com.nhnent.benjamin" level="debug" />
+    <logger name="com.nhnent.benjamin" level="debug">
+        <appender-ref ref="console" />
+    </logger>
 
     <root level="error">
         <appender-ref ref="console"/>
