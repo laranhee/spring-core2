@@ -7,6 +7,7 @@
     <groupId>x3.benjamin.playground</groupId>
     <artifactId>spring-core</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <jdk-version>1.8</jdk-version>
@@ -127,6 +128,15 @@
                     <target>${jdk-version}</target>
                     <encoding>${source-encoding}</encoding>
                     <useIncrementalCompilation>false</useIncrementalCompilation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <encoding>${resource-encoding}</encoding>
                 </configuration>
             </plugin>
 
