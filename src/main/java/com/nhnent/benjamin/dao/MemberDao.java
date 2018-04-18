@@ -1,14 +1,12 @@
 package com.nhnent.benjamin.dao;
 
-import com.nhnent.benjamin.vo.Member;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+// TODO : remove mybatis
+@Deprecated
 @Repository
 public class MemberDao {
+/*
     private static final String NAMESPACE = "memberDao.";
 
 
@@ -43,5 +41,6 @@ public class MemberDao {
     public int delete(int no) throws Exception {
         return sqlSessionTemplate.delete(NAMESPACE + "deleteMember", no);
     }
+*/
 
 }

@@ -1,13 +1,39 @@
 package com.nhnent.benjamin.vo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
+// TODO : make Member as Entity
+@Entity
+@Table(name = "MEMBERS")
 public class Member {
+    @Id
+    @Column(name = "MNO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int 		no;
+
+    @Column(name = "MNAME")
     protected String 	name;
+
+    @Column(name = "EMAIL")
     protected String 	email;
+
+    @Column(name = "PWD")
     protected String 	password;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "CRE_DATE")
     protected Date		createdDate;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "MOD_DATE")
     protected Date		modifiedDate;
 
 

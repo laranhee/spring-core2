@@ -1,6 +1,6 @@
 package com.nhnent.benjamin.service.kor;
 
-import com.nhnent.benjamin.dao.MemberDao;
+import com.nhnent.benjamin.repository.MemberRepository;
 import com.nhnent.benjamin.service.MemberService;
 import com.nhnent.benjamin.vo.Member;
 import org.slf4j.Logger;
@@ -21,8 +21,11 @@ public class MemberServiceImpl implements MemberService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MemberService.class);
 
+    // TODO : remove mybatis and add jpa-related dependency
+//    @Autowired
+//    private MemberDao memberDao;
     @Autowired
-    private MemberDao memberDao;
+    private MemberRepository memberRepository;
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -36,7 +39,9 @@ public class MemberServiceImpl implements MemberService {
         member.setModifiedDate(new Date());
 
         try {
-            memberDao.insert(member);
+            // TODO : replace mybatis with jpa
+//            memberDao.insert(member);
+            memberRepository.save(member);
         }
         catch (Exception e) {
             LOGGER.error("{}", e);
@@ -46,12 +51,15 @@ public class MemberServiceImpl implements MemberService {
     }
 
     public Member getMember(String email, String password) throws Exception {
-        Member member = memberDao.exist(email, password);
+        // TODO : replace mybatis with jpa
+//        Member member = memberDao.exist(email, password);
+        Member member = memberRepository.findByEmailAndPassword(email, password);
         if (member == null) {
             return null;
         }
 
-        return memberDao.selectOne(member.getNo());
+//        return memberDao.selectOne(member.getNo());
+        return memberRepository.findOne(member.getNo());
     }
 
     public void exchangeMemberName(Member member1, Member member2) throws Exception {
@@ -62,8 +70,11 @@ public class MemberServiceImpl implements MemberService {
             member1.setName(member2.getName());
             member2.setName(tempName);
 
-            memberDao.update(member1);
-            memberDao.update(member2);
+            // TODO : replace mybatis with jpa
+//            memberDao.update(member1);
+//            memberDao.update(member2);
+            memberRepository.save(member1);
+            memberRepository.save(member2);
 
             this.transactionManager.commit(status);
         }
